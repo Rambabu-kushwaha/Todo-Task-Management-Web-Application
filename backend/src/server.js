@@ -116,17 +116,18 @@ const PORT = parseInt(process.env.PORT, 10) || 5000;
 const MAX_PORT = 5010;
 
 const startServer = (port) => {
-  server.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+  const portNum = parseInt(port, 10);
+  server.listen(portNum, () => {
+    console.log(`Server running on port ${portNum}`);
     console.log(`Environment: ${process.env.NODE_ENV}`);
   }).on('error', (err) => {
     if (err.code === 'EADDRINUSE') {
-      const nextPort = Number(port) + 1;
+      const nextPort = portNum + 1;
       if (nextPort > MAX_PORT) {
         console.error(`All ports from ${PORT} to ${MAX_PORT} are in use. Exiting.`);
         process.exit(1);
       }
-      console.log(`Port ${port} is in use, trying port ${nextPort}...`);
+      console.log(`Port ${portNum} is in use, trying port ${nextPort}...`);
       startServer(nextPort);
     } else {
       console.error('Server error:', err);
