@@ -117,7 +117,16 @@ const MAX_PORT = 5010;
 
 const startServer = (port) => {
   const portNum = parseInt(port, 10);
-  server.listen(portNum, () => {
+  const newServer = createServer(app);
+  const io = new Server(newServer, {
+    cors: {
+      origin: process.env.FRONTEND_URL || "http://localhost:3000",
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      credentials: true
+    }
+  });
+  setupSocketHandlers(io);
+  newServer.listen(portNum, () => {
     console.log(`Server running on port ${portNum}`);
     console.log(`Environment: ${process.env.NODE_ENV}`);
   }).on('error', (err) => {

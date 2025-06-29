@@ -7,13 +7,15 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
     minlength: 3,
-    maxlength: 30
+    maxlength: 30,
+    unique: true
   },
   email: {
     type: String,
     required: true,
     trim: true,
-    lowercase: true
+    lowercase: true,
+    unique: true
   },
   password: {
     type: String,
@@ -22,7 +24,8 @@ const userSchema = new mongoose.Schema({
   },
   googleId: {
     type: String,
-    sparse: true
+    sparse: true,
+    unique: true
   },
   name: {
     type: String,
@@ -80,10 +83,5 @@ userSchema.methods.generateToken = function() {
     { expiresIn: '7d' }
   );
 };
-
-// Create indexes
-userSchema.index({ email: 1 }, { unique: true });
-userSchema.index({ googleId: 1 }, { unique: true, sparse: true });
-userSchema.index({ username: 1 }, { unique: true });
 
 module.exports = mongoose.model('User', userSchema); 

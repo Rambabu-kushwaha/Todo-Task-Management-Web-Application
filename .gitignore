@@ -219,4 +219,8 @@ playwright/.cache/
 # Netlify
 .netlify
 
-# Railway 
+# Railway
+
+# Credential files (remove these from repository)
+fix-mongodb-uri.js
+update-mongodb-atlas.js 

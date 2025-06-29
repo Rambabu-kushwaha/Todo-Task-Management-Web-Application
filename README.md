@@ -136,12 +136,21 @@ VITE_API_URL=http://localhost:5000
 
 ### 5. MongoDB Atlas Setup
 
+**Option 1: Interactive Setup (Recommended)**
+```bash
+# Run the interactive setup script
+node setup-mongodb.js
+```
+
+**Option 2: Manual Setup**
 1. Create a free MongoDB Atlas account
 2. Create a new cluster (M0 Free tier)
 3. Create a database user
 4. Get your connection string
 5. Add your IP to the whitelist
 6. Update `MONGODB_URI` in backend `.env`
+
+**⚠️ Security Note:** Never commit your actual MongoDB credentials to version control. The `.env` files are already in `.gitignore` to prevent accidental exposure.
 
 ### 6. Run the Application
 
