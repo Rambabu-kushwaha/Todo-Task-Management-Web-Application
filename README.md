@@ -372,4 +372,4 @@ This project was built for the hackathon organized by [Kato Maran](https://www.k
 
 ---
 
-**This project is a part of a hackathon run by [https://www.katomaran.com](https://www.katomaran.com)** 
+**This project is a part of a hackathon run by [https://www.katomaran.com](https://www.katomaran.com)**
